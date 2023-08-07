@@ -93,7 +93,7 @@ function App() {
             onClick={() => handlePlayPad(pad.text, pad.audioClip)}
           >
             {pad.text}
-            <audio id={pad.text} src={pad.src}></audio>
+            <audio class="clip" id={pad.text} src={pad.src}></audio>
           </div>
         ))}
       </div>

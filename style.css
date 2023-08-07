@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Lisu+Bosa:wght@200&display=swap");
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#drum-machine {
+  border: 1px solid rgb(102, 248, 116);
+  border-radius: 15px;
+  height: 300px;
+  width: 350px;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#display {
+  width: 80%;
+  height: 25px;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-family: "Lisu Bosa", serif;
+  font-weight: 200;
+  background-color: beige;
+}
+
+.drum-pads {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  font-family: "Cherry Bomb One", cursive;
+  color: rgb(48, 137, 109);
+  text-shadow: 2px -2px 5px rgb(242, 255, 236);
+}
+
+.drum-pad {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 96px;
+  border-radius: 15px;
+  margin: 3px;
+  background-color: rgb(130, 238, 168);
+  box-shadow: 1px 1px 12px 1px rgba(255, 238, 152, 0.75);
+  cursor: pointer;
+}
+
+.drum-pad:active {
+  transform: scale(0.95);
+  color: rgb(185, 185, 185);
+  background-color: rgb(252, 255, 175);
+  box-shadow: 1px 1px 12px 1px rgba(64, 255, 198, 0.75);
+}

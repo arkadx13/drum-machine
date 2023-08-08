@@ -57,12 +57,16 @@ const drumPads = [
 
 function App() {
   const [key, setKey] = React.useState("");
+  const [record, setRecord] = React.useState("");
+  const [onRecord, SetOnRecord] = React.useState(true);
+  const [speed, setSpeed] = React.useState(0.5);
 
   const handleKeyPress = (e) => {
     drumPads.forEach((pad) => {
       if (e.keyCode === pad.keyCode) {
         handlePlayPad(pad.text, pad.audioClip);
       }
+      SetOnRecord(true);
     });
   };
 
@@ -79,11 +83,78 @@ function App() {
     tap.play();
 
     setKey(name.toUpperCase());
+    setRecord((prev) => prev + id);
+  };
+
+  const handlePlay = () => {
+    if (record === "") {
+      SetOnRecord(true);
+    } else {
+      SetOnRecord(false);
+    }
+    let index = 0;
+    let recordArr = record.split("");
+
+    const interval = setInterval(() => {
+      const recording = document.getElementById(recordArr[index]);
+      recording.play();
+      index++;
+    }, 600 * speed);
+
+    setTimeout(
+      () => clearInterval(interval),
+      600 * speed * recordArr.length - 1
+    );
+  };
+
+  const handleStop = () => {
+    SetOnRecord(true);
+    setRecord("");
+  };
+
+  const handleRepeat = () => {
+    let index = 0;
+    let recordArr = record.split("");
+
+    const interval = setInterval(() => {
+      const recording = document.getElementById(recordArr[index]);
+      recording.play();
+      index++;
+    }, 600 * speed);
+
+    setTimeout(
+      () => clearInterval(interval),
+      600 * speed * recordArr.length - 1
+    );
   };
 
   return (
     <div id="drum-machine">
       <div id="display">{key}</div>
+      <div className="record">{record} </div>
+      <div className="interactive">
+        <input
+          type="range"
+          step="0.01"
+          value={speed}
+          max="1"
+          min="0.1"
+          onChange={(e) => {
+            setSpeed(e.target.value);
+            SetOnRecord(true);
+          }}
+        ></input>
+        {onRecord === true ? (
+          <i className="fa-solid fa-play btn" onClick={handlePlay}></i>
+        ) : (
+          <div className="stopPause">
+            <i className="fa-solid fa-stop" onClick={handleStop}></i>
+            {"  "}
+            <i className="fa-solid fa-repeat" onClick={handleRepeat}></i>
+          </div>
+        )}
+      </div>
+
       <div className="drum-pads">
         {drumPads.map((pad) => (
           <div
@@ -93,7 +164,7 @@ function App() {
             onClick={() => handlePlayPad(pad.text, pad.audioClip)}
           >
             {pad.text}
-            <audio class="clip" id={pad.text} src={pad.src}></audio>
+            <audio className="clip" id={pad.text} src={pad.src}></audio>
           </div>
         ))}
       </div>

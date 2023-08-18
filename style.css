@@ -2,9 +2,29 @@
 
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+.hero {
+  font-family: "Cherry Bomb One", cursive;
+  font-size: 60px;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+  background-image: linear-gradient(
+    to left,
+    violet,
+    indigo,
+    blue,
+    green,
+    yellow,
+    orange,
+    red
+  );
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 #drum-machine {

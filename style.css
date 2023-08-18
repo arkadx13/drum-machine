@@ -19,7 +19,8 @@
     rgb(122, 218, 247),
     yellow
   );
-  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-background-clip: text; /* Safari support */
   color: transparent;
 }
 

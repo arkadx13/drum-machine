@@ -130,44 +130,47 @@ function App() {
   };
 
   return (
-    <div id="drum-machine">
-      <div id="display">{key}</div>
-      <div className="record">{record} </div>
-      <div className="interactive">
-        <input
-          type="range"
-          step="0.01"
-          value={speed}
-          max="1"
-          min="0.1"
-          onChange={(e) => {
-            setSpeed(e.target.value);
-            SetOnRecord(true);
-          }}
-        ></input>
-        {onRecord === true ? (
-          <i className="fa-solid fa-play btn" onClick={handlePlay}></i>
-        ) : (
-          <div className="stopPause">
-            <i className="fa-solid fa-stop" onClick={handleStop}></i>
-            {"  "}
-            <i className="fa-solid fa-repeat" onClick={handleRepeat}></i>
-          </div>
-        )}
-      </div>
+    <div className="app">
+      <h1 className="hero">Tap away!</h1>
+      <div id="drum-machine">
+        <div id="display">{key}</div>
+        <div className="record">{record} </div>
+        <div className="interactive">
+          <input
+            type="range"
+            step="0.01"
+            value={speed}
+            max="1"
+            min="0.1"
+            onChange={(e) => {
+              setSpeed(e.target.value);
+              SetOnRecord(true);
+            }}
+          ></input>
+          {onRecord === true ? (
+            <i className="fa-solid fa-play btn" onClick={handlePlay}></i>
+          ) : (
+            <div className="stopPause">
+              <i className="fa-solid fa-stop" onClick={handleStop}></i>
+              {"  "}
+              <i className="fa-solid fa-repeat" onClick={handleRepeat}></i>
+            </div>
+          )}
+        </div>
 
-      <div className="drum-pads">
-        {drumPads.map((pad) => (
-          <div
-            className="drum-pad"
-            key={pad.keyCode}
-            id={drumPads.indexOf(pad)}
-            onClick={() => handlePlayPad(pad.text, pad.audioClip)}
-          >
-            {pad.text}
-            <audio className="clip" id={pad.text} src={pad.src}></audio>
-          </div>
-        ))}
+        <div className="drum-pads">
+          {drumPads.map((pad) => (
+            <div
+              className="drum-pad"
+              key={pad.keyCode}
+              id={drumPads.indexOf(pad)}
+              onClick={() => handlePlayPad(pad.text, pad.audioClip)}
+            >
+              {pad.text}
+              <audio className="clip" id={pad.text} src={pad.src}></audio>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

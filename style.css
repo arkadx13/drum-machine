@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Lato:wght@700&display=swap");
 
-body {
+.app {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,12 +16,8 @@ body {
   background-image: linear-gradient(
     to left,
     violet,
-    indigo,
-    blue,
-    green,
-    yellow,
-    orange,
-    red
+    rgb(122, 218, 247),
+    yellow
   );
   -webkit-background-clip: text;
   color: transparent;

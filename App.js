@@ -110,6 +110,7 @@ function App() {
   const handleStop = () => {
     SetOnRecord(true);
     setRecord("");
+    setKey("");
   };
 
   const handleRepeat = () => {
